@@ -7,6 +7,7 @@ module LightsOut
   class Layout < HTRB::Component
     def render(&content)
       _header!
+
       main! do
         remit &content if block_given?
       end
