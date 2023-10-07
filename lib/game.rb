@@ -24,7 +24,7 @@ module LightsOut
       values
     end
 
-    attr_reader :moves
+    attr_reader :moves, :lights
 
     def initialize(seed)
       unless Game.valid_seed? seed
@@ -57,8 +57,6 @@ module LightsOut
       @seed
     end
 
-    MOVE_FLIPS = { 0 => 3, 1 => 7, 2 => 14, 3 => 28, 4 => 56, 5 => 48 }
-
     def move!(index)
       raise IndexError, 'Move index out of bounds' unless (0...36).cover? index
       row, col = index.divmod 6
@@ -87,6 +85,12 @@ module LightsOut
 
     def win?
       @lights.all?(&:zero?)
+    end
+
+    def [](index)
+      raise IndexError, 'Index Out of bounds' unless (0...36).cover? index
+      row, col = index.divmod 6
+      @lights[row] & 2**col != 0
     end
 
     private

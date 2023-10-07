@@ -5,7 +5,9 @@ module LightsOut
     def render
       value = props[:value]
 
-      dl! do
+      dl! hx_post: "/new/#{value}",
+          hx_swap: 'innerHTML',
+          hx_target: 'main' do
         dt! do
           t! 'Initial Seed:'
         end

@@ -7,7 +7,9 @@ module LightsOut
     def render
       seed = Game.random_seed
 
-      dl! do
+      dl! hx_post: "/new/#{seed}",
+          hx_swap: 'innerHTML',
+          hx_target: 'main' do
         dt! do
           t! 'New Game:'
         end
