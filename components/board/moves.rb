@@ -5,7 +5,10 @@ module LightsOut
     def render
       value = props[:value]
 
-      dl! id: 'moves', hx_swap_oob: props[:out_of_band] do
+      attributes = { id: 'moves' }
+      attributes[:hx_swap_oob] = true if props[:out_of_band]
+
+      dl! **attributes do
         dt! do
           t! 'Moves:'
         end

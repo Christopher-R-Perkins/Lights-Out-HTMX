@@ -1,8 +1,8 @@
 module LightsOut
   require 'htrb'
 
-  require_relative './board'
-  require_relative './win'
+  require_relative '../board/board'
+  require_relative '../board/win'
 
   class GamePage < HTRB::Component
     def render

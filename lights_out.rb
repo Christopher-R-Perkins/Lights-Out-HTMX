@@ -2,7 +2,7 @@ require 'sinatra'
 require 'htrb'
 
 require_relative './components/layout/layout'
-require_relative './components/board/game_page'
+require_relative './components/pages/game_page'
 require_relative './lib/game'
 
 configure do
@@ -43,7 +43,11 @@ put '/move' do
   changes = @board.move! move
   board = @board
 
-  return HTRB.html { _gamepage! board: board } if won?
+  if won?
+    response['HX-Retarget'] = 'main'
+    response['HX-Reswap'] = 'innerHTML'
+    return HTRB.html { _gamepage! board: board }
+  end
 
   HTRB.html do
     changes.each do |index|
