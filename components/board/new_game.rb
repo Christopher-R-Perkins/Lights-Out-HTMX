@@ -9,7 +9,8 @@ module LightsOut
 
       dl! hx_post: "/new/#{seed}",
           hx_swap: 'innerHTML',
-          hx_target: 'main' do
+          hx_target: 'main',
+          class: 'button' do
         dt! do
           t! 'New Game:'
         end

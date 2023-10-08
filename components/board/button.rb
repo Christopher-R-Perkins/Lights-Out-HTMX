@@ -5,7 +5,7 @@ module LightsOut
     def render
       index = props[:index]
       attributes = {
-        class: "light #{props[:on] ? 'on' : ''}",
+        class: "button light #{props[:on] ? 'on' : ''}",
         id: "light-#{index}",
         hx_put: "/move",
         hx_swap: 'outerHTML',

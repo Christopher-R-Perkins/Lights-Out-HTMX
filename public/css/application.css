@@ -108,3 +108,7 @@ footer {
   justify-content: center;
   font-size: 36px;
 }
+
+.button:hover {
+  cursor: pointer;
+}
