@@ -5,19 +5,20 @@ module LightsOut
 
   class NewGame < HTRB::Component
     def render
-      seed = Game.random_seed
+      url = "/new/#{Game.random_seed}"
 
-      dl! hx_post: "/new/#{seed}",
-          hx_swap: 'innerHTML',
-          hx_target: 'main',
-          class: 'button' do
+      dl! do
         dt! do
           t! 'New Game:'
         end
 
         dd! do
-          span! do
-            t! seed
+          a! hx_post: url,
+             hx_swap: 'innerHTML',
+             hx_target: 'main',
+             class: 'button',
+             href: url do
+            t! 'Random Seed'
           end
         end
       end

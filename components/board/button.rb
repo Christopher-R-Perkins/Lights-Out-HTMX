@@ -10,11 +10,12 @@ module LightsOut
         hx_put: "/move",
         hx_swap: 'outerHTML',
         hx_vals: "{\"move\": #{index}}",
+        href: "/move?move=#{index}",
       }
 
       attributes[:hx_swap_oob] = true if props[:out_of_band]
 
-      div! **attributes
+      a! **attributes
     end
   end
 end

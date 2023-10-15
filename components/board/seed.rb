@@ -3,18 +3,20 @@ module LightsOut
 
   class Seed < HTRB::Component
     def render
+      url = "/new/#{props[:value]}"
       value = props[:value]
 
-      dl! hx_post: "/new/#{value}",
-          hx_swap: 'innerHTML',
-          hx_target: 'main',
-          class: 'button' do
+      dl!  do
         dt! do
           t! 'Initial Seed:'
         end
 
         dd! do
-          span! do
+          a! hx_post: url,
+             hx_swap: 'innerHTML',
+             hx_target: 'main',
+             class: 'button',
+             href: url do
             t! value
           end
         end
