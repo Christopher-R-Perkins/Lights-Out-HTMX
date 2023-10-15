@@ -3,8 +3,8 @@ module LightsOut
 
   class Seed < HTRB::Component
     def render
-      url = "/new/#{props[:value]}"
       value = props[:value]
+      url = "/new/#{value}"
 
       dl!  do
         dt! do
